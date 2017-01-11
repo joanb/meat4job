@@ -1,5 +1,7 @@
 package net.andapps.meat4job.ui.menu;
 
+import net.andapps.meat4job.ui.fragments.maps.MapsFragment;
+
 import javax.inject.Inject;
 
 /**
@@ -25,7 +27,7 @@ public class MenuPresenter {
     }
 
     void onLocationSelected() {
-
+        view.startFragment(new MapsFragment());
     }
 
     void onContactSelected() {

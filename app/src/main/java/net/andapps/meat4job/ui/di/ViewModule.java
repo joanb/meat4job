@@ -2,6 +2,7 @@ package net.andapps.meat4job.ui.di;
 
 import dagger.Module;
 import dagger.Provides;
+import net.andapps.meat4job.ui.fragments.maps.MapsView;
 import net.andapps.meat4job.ui.menu.MenuView;
 
 /**
@@ -13,15 +14,24 @@ import net.andapps.meat4job.ui.menu.MenuView;
 public class ViewModule {
 
 
-    private final MenuView menuView;
+    private MenuView menuView;
+    private MapsView mapsView;
 
     public ViewModule(MenuView menuView) {
         this.menuView = menuView;
     }
 
+    public ViewModule(MapsView mapsView) {
+        this.mapsView = mapsView;
+    }
     @Provides
-    MenuView providesMenuview() {
+    MenuView providesMenuView() {
         return menuView;
+    }
+
+    @Provides
+    MapsView providesMapsView() {
+        return mapsView;
     }
 }
 

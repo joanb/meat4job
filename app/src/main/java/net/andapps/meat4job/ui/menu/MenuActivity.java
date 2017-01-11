@@ -3,6 +3,7 @@ package net.andapps.meat4job.ui.menu;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.view.MenuItem;
 import butterknife.BindView;
 import net.andapps.meat4job.Meat4Job;
@@ -61,4 +62,12 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
                 break;
         }
         return true;    }
+
+    @Override
+    public void startFragment(Fragment fragmentToShow) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_container, fragmentToShow)
+                .commit();
+    }
 }

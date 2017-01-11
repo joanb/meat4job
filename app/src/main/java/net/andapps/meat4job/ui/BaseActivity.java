@@ -24,7 +24,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         initializeViewsInjection();
     }
 
-    protected ApplicationComponent getApplicationComponent(Meat4Job application) {
+    public ApplicationComponent getApplicationComponent(Meat4Job application) {
         return application.getApplicationComponent();
     }
 

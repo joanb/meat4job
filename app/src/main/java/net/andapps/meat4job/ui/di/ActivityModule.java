@@ -1,9 +1,9 @@
 package net.andapps.meat4job.ui.di;
 
 import android.app.Activity;
+import android.support.v4.app.Fragment;
 import dagger.Module;
 import dagger.Provides;
-import net.andapps.meat4job.model.di.DomainModule;
 
 /**
  * Created by joanbarroso on 11/01/2017.
@@ -13,19 +13,27 @@ import net.andapps.meat4job.model.di.DomainModule;
 @Module(
         includes = {
                 ViewModule.class,
-                DomainModule.class
         }
 )
 public class ActivityModule {
 
-    private final Activity activity;
+    private Activity activity;
+    private Fragment fragment;
 
     public ActivityModule(Activity activity) {
         this.activity = activity;
+    }
+    public ActivityModule(Fragment fragment) {
+        this.fragment = fragment;
     }
 
     @Provides
     Activity provideActivity() {
         return activity;
+    }
+
+    @Provides
+    Fragment provideFragment(){
+        return fragment;
     }
 }

@@ -6,6 +6,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
+
+    <fragment
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/fragment_container"
+            class="net.andapps.meat4job.ui.fragments.maps.MapsFragment"/>
+
     <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"

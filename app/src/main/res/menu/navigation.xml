@@ -5,24 +5,24 @@
             android:id="@+id/action_info"
             android:enabled="true"
             android:icon="@mipmap/ic_launcher_round"
-            android:title="1"
+            android:title="Info"
             app:showAsAction="ifRoom"/>
     <item
             android:id="@+id/action_tweets"
             android:enabled="true"
             android:icon="@mipmap/ic_launcher_round"
-            android:title="2"
+            android:title="Tweets"
             app:showAsAction="ifRoom"/>
     <item
             android:id="@+id/action_map"
             android:enabled="true"
             android:icon="@mipmap/ic_launcher_round"
-            android:title="3"
+            android:title="Location"
             app:showAsAction="ifRoom"/>
     <item
             android:id="@+id/action_contact"
             android:enabled="true"
             android:icon="@mipmap/ic_launcher_round"
-            android:title="3"
+            android:title="Contact"
             app:showAsAction="ifRoom"/>
 </menu>
