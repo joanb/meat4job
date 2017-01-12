@@ -4,25 +4,25 @@
     <item
             android:id="@+id/action_info"
             android:enabled="true"
-            android:icon="@mipmap/ic_launcher_round"
+            android:icon="@drawable/ic_info"
             android:title="Info"
             app:showAsAction="ifRoom"/>
     <item
             android:id="@+id/action_tweets"
             android:enabled="true"
-            android:icon="@mipmap/ic_launcher_round"
+            android:icon="@drawable/ic_tweets"
             android:title="Tweets"
             app:showAsAction="ifRoom"/>
     <item
             android:id="@+id/action_map"
             android:enabled="true"
-            android:icon="@mipmap/ic_launcher_round"
+            android:icon="@drawable/ic_place"
             android:title="Location"
             app:showAsAction="ifRoom"/>
     <item
             android:id="@+id/action_contact"
             android:enabled="true"
-            android:icon="@mipmap/ic_launcher_round"
+            android:icon="@drawable/ic_contact"
             android:title="Contact"
             app:showAsAction="ifRoom"/>
 </menu>

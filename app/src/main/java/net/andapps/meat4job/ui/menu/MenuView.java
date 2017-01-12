@@ -8,4 +8,6 @@ import android.support.v4.app.Fragment;
 
 public interface MenuView {
     void startFragment(Fragment fragmentToShow);
+
+    void initializeViews();
 }

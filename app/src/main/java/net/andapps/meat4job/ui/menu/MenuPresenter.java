@@ -33,4 +33,8 @@ public class MenuPresenter {
     void onContactSelected() {
 
     }
+
+    public void onStart() {
+        view.initializeViews();
+    }
 }

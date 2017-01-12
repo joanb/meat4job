@@ -6,6 +6,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.view.MenuItem;
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import net.andapps.meat4job.Meat4Job;
 import net.andapps.meat4job.R;
 import net.andapps.meat4job.ui.BaseActivity;
@@ -26,6 +27,12 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
+        navigationBar = (BottomNavigationView)
+                findViewById(R.id.bottom_navigation);
+
+        ButterKnife.bind(this);
+        navigationBar.setOnNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -37,11 +44,18 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
                 .viewModule(new ViewModule(this))
                 .build()
                 .inject(this);
+
+        presenter.onStart();
+
+    }
+
+    @Override
+    public void initializeViews() {
+//        navigationBar.setOnNavigationItemSelectedListener(this);
     }
 
     @Override
     protected void onViewLoaded() {
-
     }
 
     @Override
