@@ -5,20 +5,14 @@ Created by Helm  11/01/2017.
 
 package net.andapps.meat4job.ui.fragments.maps;
 
-import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.google.android.gms.maps.*;
-import com.google.android.gms.maps.model.CameraPosition;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import net.andapps.meat4job.Meat4Job;
@@ -63,7 +57,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, MapsVi
 
             map.addMarker(new MarkerOptions().position(
                     new LatLng(places.get(i).getGeometry().getLocation().getLat(),
-                            places.get(i).getGeometry().getLocation().getLng())));
+                            places.get(i).getGeometry().getLocation().getLng()))
+                    .title(places.get(i).getName()));
         }
     }
 
@@ -107,41 +102,39 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, MapsVi
 
         map = googleMap;
 
-        LatLng barcelona = new LatLng(41.390782,2.170132);
+        LatLng barcelona = new LatLng(41.390782, 2.170132);
 //        map.moveCamera(CameraUpdateFactory.newLatLngZoom(barcelona, 10));
+        map.moveCamera(CameraUpdateFactory.newLatLng(barcelona));
+//
+//        CameraPosition cameraPosition = new CameraPosition.Builder()
+//                .target(barcelona)      // Sets the center of the map to Mountain View
+//                .zoom(10)                   // Sets the zoom
+//                .build();                   // Creates a CameraPosition from the builder
+//        map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
 
-        CameraPosition cameraPosition = new CameraPosition.Builder()
-                .target(barcelona)      // Sets the center of the map to Mountain View
-                .zoom(10)                   // Sets the zoom
-                .build();                   // Creates a CameraPosition from the builder
-        map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-        if (ActivityCompat.checkSelfPermission(rootView.getContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(rootView.getContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            ActivityCompat.requestPermissions(((Activity) rootView.getContext()),
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
-                    REQUEST_CODE);
-        } else {
-//            map.setMyLocationEnabled(true);
-        }
+//        if (ActivityCompat.checkSelfPermission(rootView.getContext(),
+//                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+//                && ActivityCompat.checkSelfPermission(rootView.getContext(),
+//                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//
+//            ActivityCompat.requestPermissions(((Activity) rootView.getContext()),
+//                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
+//                    REQUEST_CODE);
+//        } else {
+////            map.setMyLocationEnabled(true);
+//        }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (ActivityCompat.checkSelfPermission(rootView.getContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(rootView.getContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-//            map.setMyLocationEnabled(true);
-        }
-    }
-
-
-
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+//        if (ActivityCompat.checkSelfPermission(rootView.getContext(),
+//                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
+//                && ActivityCompat.checkSelfPermission(rootView.getContext(),
+//                Manifest.permission.ACCESS_COARSE_LOCATION)
+//                != PackageManager.PERMISSION_GRANTED) {
+////            map.setMyLocationEnabled(true);
+//        }
+//    }
 
 }

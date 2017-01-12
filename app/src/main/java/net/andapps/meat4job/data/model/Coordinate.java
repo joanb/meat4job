@@ -6,22 +6,22 @@ Created by Helm  11/01/2017.
 package net.andapps.meat4job.data.model;
 
 public class Coordinate {
-    float lat;
-    float lng;
+    double lat;
+    double lng;
 
-    public float getLat() {
+    public double getLat() {
         return lat;
     }
 
-    public void setLat(float lat) {
+    public void setLat(double lat) {
         this.lat = lat;
     }
 
-    public float getLng() {
+    public double getLng() {
         return lng;
     }
 
-    public void setLng(float lng) {
+    public void setLng(double lng) {
         this.lng = lng;
     }
 }
