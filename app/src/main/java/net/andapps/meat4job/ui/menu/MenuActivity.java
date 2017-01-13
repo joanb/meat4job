@@ -27,9 +27,8 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-        navigationBar = (BottomNavigationView)
-                findViewById(R.id.bottom_navigation);
-
+//        navigationBar = (BottomNavigationView)
+//                findViewById(R.id.bottom_navigation);
         ButterKnife.bind(this);
         navigationBar.setOnNavigationItemSelectedListener(this);
 

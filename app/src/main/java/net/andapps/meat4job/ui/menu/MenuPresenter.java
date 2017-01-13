@@ -1,6 +1,7 @@
 package net.andapps.meat4job.ui.menu;
 
 import net.andapps.meat4job.ui.fragments.maps.MapsFragment;
+import net.andapps.meat4job.ui.fragments.tweets.TweetsFragment;
 
 import javax.inject.Inject;
 
@@ -23,7 +24,7 @@ public class MenuPresenter {
     }
 
     void onTweetsSelected() {
-
+        view.startFragment(new TweetsFragment());
     }
 
     void onLocationSelected() {

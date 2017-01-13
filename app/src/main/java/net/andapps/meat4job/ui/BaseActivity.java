@@ -32,7 +32,7 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     private void initializeViewsInjection() {
         ButterKnife.setDebug(true);
-        ButterKnife.bind(this);
+//        ButterKnife.bind(this);
         onViewLoaded();
     }
 
