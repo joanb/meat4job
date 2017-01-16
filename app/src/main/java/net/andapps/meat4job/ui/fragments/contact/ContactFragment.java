@@ -28,8 +28,10 @@ public class ContactFragment extends Fragment implements ContactView {
     WebView webView;
     @BindView(R.id.imageView)
     ImageView imageView;
+
     @Inject
     ContactPresenter presenter;
+
     private Context parentActivity;
 
 

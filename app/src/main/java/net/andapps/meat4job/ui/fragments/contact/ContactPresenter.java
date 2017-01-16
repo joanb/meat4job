@@ -14,7 +14,6 @@ public class ContactPresenter {
     private static final String TOKEN_URL = "https://api.instagram.com/oauth/authorize/?client_id=3dcd93a2418e4861a44c01342a78bc74&redirect_uri=http://github.com/joanb/meat4job/&response_type=token";
     private final ContactView view;
     private final InstagramDataRepository repository;
-    private String ACCES_TOKEN = "access_token";
 
     @Inject
     public ContactPresenter(ContactView view, InstagramDataRepository repository) {
@@ -28,7 +27,8 @@ public class ContactPresenter {
     }
 
     void onPageFinished(String url) {
-        if (url.contains(ACCES_TOKEN)) {
+        String ACCESS_TOKEN = "access_token";
+        if (url.contains(ACCESS_TOKEN)) {
             String accessToken = url.split("=")[1];
             repository.getPicture(new InstagramDataRepository.GetPictureCallback() {
                 @Override

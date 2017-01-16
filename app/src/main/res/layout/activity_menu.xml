@@ -17,6 +17,15 @@
             >
     </android.support.v7.widget.Toolbar>
 
+    <ProgressBar
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="72dp"
+            android:layout_marginEnd="16dp"
+            android:id="@+id/progressBar"
+            android:visibility="invisible"/>
+
     <fragment
             android:layout_width="match_parent"
             android:layout_height="match_parent"

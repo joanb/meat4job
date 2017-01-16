@@ -3,10 +3,10 @@
       xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-            android:id="@+id/action_contact"
+            android:id="@+id/action_map"
             android:enabled="true"
-            android:icon="@drawable/ic_info"
-            android:title="@string/info"
+            android:icon="@drawable/ic_place"
+            android:title="@string/location"
             app:showAsAction="ifRoom"/>
     <item
             android:id="@+id/action_tweets"
@@ -15,9 +15,9 @@
             android:title="@string/tweets"
             app:showAsAction="ifRoom"/>
     <item
-            android:id="@+id/action_map"
+            android:id="@+id/action_contact"
             android:enabled="true"
-            android:icon="@drawable/ic_place"
-            android:title="@string/location"
+            android:icon="@drawable/ic_info"
+            android:title="@string/info"
             app:showAsAction="ifRoom"/>
 </menu>

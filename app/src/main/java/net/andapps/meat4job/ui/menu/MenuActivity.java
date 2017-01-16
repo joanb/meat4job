@@ -11,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ProgressBar;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import net.andapps.meat4job.Meat4Job;
@@ -28,11 +29,17 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
     @Inject
     MenuPresenter presenter;
 
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
+
+
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
     @BindView(R.id.bottom_navigation)
     BottomNavigationView navigationBar;
 
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
+    public static final String EMPTY = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +49,8 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
         ButterKnife.bind(this);
 
         navigationBar.setOnNavigationItemSelectedListener(this);
+
+        toolbar.setTitle(EMPTY);
         setSupportActionBar(toolbar);
     }
 
@@ -54,24 +63,18 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
                 .viewModule(new ViewModule(this))
                 .build()
                 .inject(this);
-
-        presenter.onStart();
-
     }
 
-    @Override
-    public void initializeViews() {
-    }
 
-    private void showLanguajeDialog() {
+    private void showLanguageDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
         builder.setTitle(R.string.languaje_pick);
-        // Add the buttons
+
         builder.setPositiveButton(R.string.spanish, new DialogInterface.OnClickListener() {
             String SPANISH = "es";
 
             public void onClick(DialogInterface dialog, int id) {
-                switchToLanguage(SPANISH);
+                presenter.onChangeLanguage(SPANISH);
                 dialog.dismiss();
             }
         });
@@ -79,16 +82,16 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
             String ENGLISH = "en";
 
             public void onClick(DialogInterface dialog, int id) {
-                switchToLanguage(ENGLISH);
+                presenter.onChangeLanguage(ENGLISH);
                 dialog.dismiss();
             }
         });
-        builder.setIcon(getResources().getDrawable(R.drawable.ic_contact));
         builder.create().show();
     }
 
     @SuppressWarnings("deprecation")
-    private void switchToLanguage(String language) {
+    @Override
+    public void switchLanguageTo(String language) {
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
         Configuration config = new Configuration();
@@ -100,10 +103,6 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
         startActivity(refresh);
         finish();
 
-    }
-
-    @Override
-    protected void onViewLoaded() {
     }
 
     @Override
@@ -132,14 +131,13 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        showLanguajeDialog();
+        showLanguageDialog();
         return super.onOptionsItemSelected(item);
     }
 }

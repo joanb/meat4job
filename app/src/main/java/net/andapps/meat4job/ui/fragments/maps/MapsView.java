@@ -8,7 +8,5 @@ package net.andapps.meat4job.ui.fragments.maps;
 import net.andapps.meat4job.data.model.PlaceLocations;
 
 public interface MapsView {
-    void initializeInjection();
-
     void addPinsToMap(PlaceLocations locations);
 }

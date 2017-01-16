@@ -4,11 +4,14 @@
               android:layout_height="match_parent"
               android:orientation="vertical"
               android:background="@android:color/white"
+              android:layout_marginTop="56dp"
               tools:context="net.andapps.meat4job.ui.fragments.contact.ContactFragment">
 
     <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
             android:layout_weight="1.7"
             android:visibility="gone"
             android:id="@+id/imageView"/>
@@ -17,7 +20,5 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/webView"/>
-
-
 
 </LinearLayout>

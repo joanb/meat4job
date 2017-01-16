@@ -48,7 +48,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, MapsVi
         return rootView;
     }
 
-
     @Override
     public void addPinsToMap(PlaceLocations locations) {
         List<PlaceLocations.Geometry> places = locations.getResults();

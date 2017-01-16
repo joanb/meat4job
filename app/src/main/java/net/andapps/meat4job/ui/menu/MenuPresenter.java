@@ -19,7 +19,7 @@ public class MenuPresenter {
         this.view = view;
     }
 
-        void onTweetsSelected() {
+    void onTweetsSelected() {
         view.startFragment(new TweetsFragment());
     }
 
@@ -31,7 +31,7 @@ public class MenuPresenter {
         view.startFragment(new ContactFragment());
     }
 
-    public void onStart() {
-        view.initializeViews();
+    public void onChangeLanguage(String language) {
+        view.switchLanguageTo(language);
     }
 }
