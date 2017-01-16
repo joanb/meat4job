@@ -45,16 +45,19 @@ dependencies {
     //General
 
     //UI
+    compile 'com.squareup.picasso:picasso:2.5.2'
 
     //Data
-    
 
+
+    compile('com.twitter.sdk.android:twitter:2.3.1@aar') {
+        transitive = true;
+    }
     compile 'com.squareup.okhttp3:logging-interceptor:3.3.1'
     compile 'com.google.dagger:dagger:2.8'
     compile 'com.android.support:design:25.1.0'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta4'
     compile 'com.jakewharton:butterknife:8.4.0'
-    apt 'com.jakewharton:butterknife-compiler:8.4.0'
     compile 'com.google.android.gms:play-services-maps:10.0.1'
     compile 'com.android.support:appcompat-v7:25.1.0'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
@@ -63,9 +66,7 @@ dependencies {
     compile 'com.android.support:support-v4:25.1.0'
     testCompile 'junit:junit:4.12'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    apt 'com.jakewharton:butterknife-compiler:8.4.0'
     apt 'com.google.dagger:dagger-compiler:2.8'
     provided 'javax.annotation:jsr250-api:1.0'
-    compile('com.twitter.sdk.android:twitter:2.3.1@aar') {
-        transitive = true;
-    }
 }

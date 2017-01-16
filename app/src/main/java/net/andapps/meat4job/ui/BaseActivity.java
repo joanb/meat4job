@@ -38,16 +38,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     protected abstract void onViewLoaded();
 
-
     protected void showSnackbarWithText(String text, View view) {
         Snackbar.make(view, text, Snackbar.LENGTH_LONG).show();
     }
 
-//    protected void hideKeyboard() {
-//        View view = this.getCurrentFocus();
-//        if (view != null) {
-//            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-//            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-//        }
-//    }
 }

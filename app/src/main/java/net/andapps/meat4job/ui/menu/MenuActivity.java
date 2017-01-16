@@ -1,9 +1,15 @@
 package net.andapps.meat4job.ui.menu;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -15,23 +21,28 @@ import net.andapps.meat4job.ui.di.DaggerActivityComponent;
 import net.andapps.meat4job.ui.di.ViewModule;
 
 import javax.inject.Inject;
+import java.util.Locale;
 
-public class MenuActivity extends BaseActivity implements MenuView, BottomNavigationView.OnNavigationItemSelectedListener{
+public class MenuActivity extends BaseActivity implements MenuView, BottomNavigationView.OnNavigationItemSelectedListener {
 
-    @Inject MenuPresenter presenter;
+    @Inject
+    MenuPresenter presenter;
 
     @BindView(R.id.bottom_navigation)
     BottomNavigationView navigationBar;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
-//        navigationBar = (BottomNavigationView)
-//                findViewById(R.id.bottom_navigation);
-        ButterKnife.bind(this);
-        navigationBar.setOnNavigationItemSelectedListener(this);
 
+        ButterKnife.bind(this);
+
+        navigationBar.setOnNavigationItemSelectedListener(this);
+        setSupportActionBar(toolbar);
     }
 
     @Override
@@ -50,7 +61,45 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
 
     @Override
     public void initializeViews() {
-//        navigationBar.setOnNavigationItemSelectedListener(this);
+    }
+
+    private void showLanguajeDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(MenuActivity.this);
+        builder.setTitle(R.string.languaje_pick);
+        // Add the buttons
+        builder.setPositiveButton(R.string.spanish, new DialogInterface.OnClickListener() {
+            String SPANISH = "es";
+
+            public void onClick(DialogInterface dialog, int id) {
+                switchToLanguage(SPANISH);
+                dialog.dismiss();
+            }
+        });
+        builder.setNegativeButton(R.string.english, new DialogInterface.OnClickListener() {
+            String ENGLISH = "en";
+
+            public void onClick(DialogInterface dialog, int id) {
+                switchToLanguage(ENGLISH);
+                dialog.dismiss();
+            }
+        });
+        builder.setIcon(getResources().getDrawable(R.drawable.ic_contact));
+        builder.create().show();
+    }
+
+    @SuppressWarnings("deprecation")
+    private void switchToLanguage(String language) {
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+        Configuration config = new Configuration();
+        config.locale = locale;
+        getBaseContext().getResources().updateConfiguration(config,
+                getBaseContext().getResources().getDisplayMetrics());
+
+        Intent refresh = new Intent(MenuActivity.this, MenuActivity.class);
+        startActivity(refresh);
+        finish();
+
     }
 
     @Override
@@ -60,10 +109,6 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
-
-            case R.id.action_info:
-                presenter.onInfoSleted();
-                break;
             case R.id.action_tweets:
                 presenter.onTweetsSelected();
                 break;
@@ -74,7 +119,8 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
                 presenter.onContactSelected();
                 break;
         }
-        return true;    }
+        return true;
+    }
 
     @Override
     public void startFragment(Fragment fragmentToShow) {
@@ -82,5 +128,18 @@ public class MenuActivity extends BaseActivity implements MenuView, BottomNaviga
                 .beginTransaction()
                 .replace(R.id.fragment_container, fragmentToShow)
                 .commit();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        showLanguajeDialog();
+        return super.onOptionsItemSelected(item);
     }
 }

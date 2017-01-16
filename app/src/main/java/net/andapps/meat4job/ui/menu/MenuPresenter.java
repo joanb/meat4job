@@ -1,5 +1,6 @@
 package net.andapps.meat4job.ui.menu;
 
+import net.andapps.meat4job.ui.fragments.contact.ContactFragment;
 import net.andapps.meat4job.ui.fragments.maps.MapsFragment;
 import net.andapps.meat4job.ui.fragments.tweets.TweetsFragment;
 
@@ -18,12 +19,7 @@ public class MenuPresenter {
         this.view = view;
     }
 
-
-    void onInfoSleted() {
-
-    }
-
-    void onTweetsSelected() {
+        void onTweetsSelected() {
         view.startFragment(new TweetsFragment());
     }
 
@@ -32,7 +28,7 @@ public class MenuPresenter {
     }
 
     void onContactSelected() {
-
+        view.startFragment(new ContactFragment());
     }
 
     public void onStart() {

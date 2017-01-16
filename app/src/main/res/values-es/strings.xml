@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">meat4job</string>
+    <string name="info">Proyecto</string>
+    <string name="location">Localización</string>
+    <string name="tweets">Tweets</string>
+    <string name="contact">Contacto</string>
+    <string name="spanish">Español</string>
+    <string name="english">Inglés</string>
+    <string name="languaje_pick">Escoge lenguaje</string>
+</resources>

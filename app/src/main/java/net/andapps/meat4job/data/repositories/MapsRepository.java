@@ -47,7 +47,6 @@ public class MapsRepository implements MapsDataRepository{
             @Override
             public void onFailure(Call<PlaceLocations> call, Throwable t) {
                 Log.v("WRONG","wrong");
-
             }
         });
     }

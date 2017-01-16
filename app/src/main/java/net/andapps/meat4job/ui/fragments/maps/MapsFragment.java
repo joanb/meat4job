@@ -36,7 +36,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, MapsVi
     @Inject
     MapsPresenter presenter;
 
-    private static final int REQUEST_CODE = 0;
     GoogleMap map;
     View rootView;
     MapView mapView;
@@ -103,38 +102,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback, MapsVi
         map = googleMap;
 
         LatLng barcelona = new LatLng(41.390782, 2.170132);
-//        map.moveCamera(CameraUpdateFactory.newLatLngZoom(barcelona, 10));
         map.moveCamera(CameraUpdateFactory.newLatLng(barcelona));
-//
-//        CameraPosition cameraPosition = new CameraPosition.Builder()
-//                .target(barcelona)      // Sets the center of the map to Mountain View
-//                .zoom(10)                   // Sets the zoom
-//                .build();                   // Creates a CameraPosition from the builder
-//        map.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition));
-
-//        if (ActivityCompat.checkSelfPermission(rootView.getContext(),
-//                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-//                && ActivityCompat.checkSelfPermission(rootView.getContext(),
-//                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-//
-//            ActivityCompat.requestPermissions(((Activity) rootView.getContext()),
-//                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION},
-//                    REQUEST_CODE);
-//        } else {
-////            map.setMyLocationEnabled(true);
-//        }
     }
-
-//    @Override
-//    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-//        if (ActivityCompat.checkSelfPermission(rootView.getContext(),
-//                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-//                && ActivityCompat.checkSelfPermission(rootView.getContext(),
-//                Manifest.permission.ACCESS_COARSE_LOCATION)
-//                != PackageManager.PERMISSION_GRANTED) {
-////            map.setMyLocationEnabled(true);
-//        }
-//    }
-
 }
